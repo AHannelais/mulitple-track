@@ -5,8 +5,10 @@ import { addTrack, stopTrack } from "../actions";
 import { connect } from "react-redux";
 import _ from "lodash";
 import styled from "styled-components";
+
 class Filebox extends React.Component {
   state = { fileUrl: "", fileName: "", duration: null, valid: null };
+
   callbackUpload = (fileUrl, fileName) => {
     this.setState({ fileUrl, fileName });
   };
@@ -44,6 +46,7 @@ class Filebox extends React.Component {
   componentDidUpdate = () => {
     this.addToTrackList();
   };
+
   render() {
     return (
       <Wrapper>

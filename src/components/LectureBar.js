@@ -1,12 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button, LectureWrappper } from "./styleSheet";
+import { Button } from "./styleSheet";
 import { playTrack, pauseTrack, stopTrack } from "../actions";
+import styled from "styled-components";
+
 class LectureBar extends React.Component {
   state = { play: "stop" };
+
   onClickPlay = () => {
-    this.setState({ play: "play" });
-    this.props.playTrack();
+    if (Object.keys(this.props.tracks).length > 0) {
+      this.setState({ play: "play" });
+      this.props.playTrack();
+    }
   };
   onClickPause = () => {
     this.setState({ play: "pause" });
@@ -21,21 +26,38 @@ class LectureBar extends React.Component {
 
     return `${min}:${Math.floor(num - min * 60)}`;
   };
+  renderDuration = () => {
+    return this.props.tracks[Object.keys(this.props.tracks)[0]]
+      ? this.timeToMin(
+          this.props.tracks[Object.keys(this.props.tracks)[0]].duration
+        )
+      : " ";
+  };
+  renderPlayPause = () => {
+    if (this.props.play === "play") {
+      return (
+        <Button onClick={this.onClickPause}>
+          <i className="fas fa-pause"></i>
+        </Button>
+      );
+    } else {
+      return (
+        <Button onClick={this.onClickPlay}>
+          <i className="fas fa-play"></i>
+        </Button>
+      );
+    }
+  };
   render() {
     return (
-      <LectureWrappper>
+      <Wrapper>
         <i
           style={{ color: "#000000", fontSize: "5rem" }}
           className="fas fa-compact-disc"
         ></i>
         Multiple Tracks
         <br />
-        <Button onClick={this.onClickPlay}>
-          <i className="fas fa-play"></i>
-        </Button>
-        <Button onClick={this.onClickPause}>
-          <i className="fas fa-pause"></i>
-        </Button>
+        {this.renderPlayPause()}
         <Button onClick={this.onClickStop}>
           <i className="fas fa-stop"></i>
         </Button>
@@ -46,13 +68,9 @@ class LectureBar extends React.Component {
             fontSize: "2.5rem",
           }}
         >
-          {this.props.tracks[Object.keys(this.props.tracks)[0]]
-            ? this.timeToMin(
-                this.props.tracks[Object.keys(this.props.tracks)[0]].duration
-              )
-            : " "}
+          {this.renderDuration()}
         </p>
-      </LectureWrappper>
+      </Wrapper>
     );
   }
 }
@@ -62,3 +80,12 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, { playTrack, pauseTrack, stopTrack })(
   LectureBar
 );
+const Wrapper = styled.div`
+  margin: 40px;
+  font-family: "NeoGrey", Impact, Haettenschweiler, "Arial Narrow Bold",
+    sans-serif;
+  font-size: 2.5rem;
+  i {
+    margin: 5px;
+  }
+`;
