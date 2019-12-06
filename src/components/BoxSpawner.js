@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import Filebox from "./Filebox";
+import Filebox from "./FileContainer";
 import { AddIcon } from "./styleSheet";
 
 class BoxSpawner extends React.Component {
