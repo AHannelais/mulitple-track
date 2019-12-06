@@ -25,6 +25,7 @@ Here is a live demo of the application : https://multiple-tracks.netlify.com/
 ## How it's done
 
 The two main components of the React App, the lecture bar and the file containers, comunicates via a Redux store to know the state of play/pause/stop or the list of uploaded files. 
+
 File Container gets files informations from Upload component and track duration from Audio Component and checks if the duration matches precedent files before adding it to the Redux track list
 
 ## How to improve it
