@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button, Slider, AudioWrapper } from "./styleSheet";
+import { Button, Slider } from "./styleSheet";
+import styled from "styled-components";
+
 class Audio extends React.Component {
   state = {
     duration: null,
@@ -64,6 +66,7 @@ class Audio extends React.Component {
         </Button>
       );
   };
+
   componentDidMount() {
     this.audio.onloadedmetadata = () => {
       this.setState(
@@ -75,7 +78,7 @@ class Audio extends React.Component {
 
   render() {
     return (
-      <AudioWrapper>
+      <Wrapper>
         {this.handlePlay()}
         {this.handleStop()}
         {this.handlePause()}
@@ -95,7 +98,7 @@ class Audio extends React.Component {
           min="0"
           max="100"
         />
-      </AudioWrapper>
+      </Wrapper>
     );
   }
 }
@@ -103,3 +106,11 @@ const mapStateToProps = state => {
   return { play: state.play.play };
 };
 export default connect(mapStateToProps)(Audio);
+
+export const Wrapper = styled.div`
+  margin-top: 20px;
+  p {
+    font-family: "Cataclysmo", Arial, Helvetica, sans-serif;
+    font-size: 2.5rem;
+  }
+`;

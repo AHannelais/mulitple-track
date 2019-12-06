@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const Button = styled.button`
   margin: 5px;
   color: #00cdac !important;
@@ -22,15 +23,7 @@ export const Button = styled.button`
     border-color: white !important;
   }
 `;
-export const LectureWrappper = styled.div`
-  margin: 40px;
-  font-family: "NeoGrey", Impact, Haettenschweiler, "Arial Narrow Bold",
-    sans-serif;
-  font-size: 2.5rem;
-  i {
-    margin: 5px;
-  }
-`;
+
 export const UploadIcon = styled.div`
   margin-right: 15px;
   right: 0;
@@ -62,6 +55,7 @@ export const UploadIcon = styled.div`
     top: 10%;
   }
 `;
+
 export const AddIcon = styled.button`
   margin: auto;
   color: white !important;
@@ -88,6 +82,7 @@ export const AddIcon = styled.button`
     top: 10%;
   }
 `;
+
 export const Slider = styled.input`
   bottom: 5%;
   left: 0;
@@ -116,12 +111,5 @@ export const Slider = styled.input`
   }
   :hover {
     opacity: 1;
-  }
-`;
-export const AudioWrapper = styled.div`
-  margin-top: 20px;
-  p {
-    font-family: "Cataclysmo", Arial, Helvetica, sans-serif;
-    font-size: 2.5rem;
   }
 `;

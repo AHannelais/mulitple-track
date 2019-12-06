@@ -18,14 +18,17 @@ class Upload extends React.Component {
     this.props.parentCallback(this.state.fileUrl, this.state.fileName);
   };
   handleChange = e => {
-    this.setState(
-      {
-        fileUrl: URL.createObjectURL(e.target.files[0]),
-        fileName: e.target.files[0].name,
-      },
-      this.sendData
-    );
+    if (e.target.files[0]) {
+      this.setState(
+        {
+          fileUrl: URL.createObjectURL(e.target.files[0]),
+          fileName: e.target.files[0].name,
+        },
+        this.sendData
+      );
+    }
   };
+
   render() {
     return (
       <div>

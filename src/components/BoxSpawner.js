@@ -3,8 +3,10 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import Filebox from "./Filebox";
 import { AddIcon } from "./styleSheet";
+
 class BoxSpawner extends React.Component {
   state = { boxCount: 2, boxes: [0, 1] };
+
   renderAddButton = () => {
     if (Object.keys(this.props.tracks).length >= this.state.boxCount) {
       return (
@@ -47,6 +49,7 @@ const mapStateToProps = state => {
   return { tracks: state.tracks };
 };
 export default connect(mapStateToProps)(BoxSpawner);
+
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
